@@ -58,14 +58,24 @@ By default, `culls` preserves fields that are typically required for publishing 
 
 </details>
 
-To specify fields to preserve, use the `--preserve` flag. Fields should be comma-separated.
+To specify fields to preserve, use the `--preserve` flag.
 
 ```bash
 # NPM
-npx culls --preserve=scripts,customField
+npx culls --preserve=svelte
 
 # Bun
-bunx culls --preserve=scripts,customField
+bunx culls --preserve=svelte
+```
+
+Multiple fields should be comma-separated.
+
+```bash
+# NPM
+npx culls --preserve=svelte,prettier
+
+# Bun
+bunx culls --preserve=svelte,prettier
 ```
 
 ## Sample GitHub Actions workflow
