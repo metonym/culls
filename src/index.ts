@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import { cull } from "./cli";
+import { culls } from "./cli";
 
-cull();
+culls();

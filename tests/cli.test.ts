@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { cull } from "../src/cli";
+import { culls } from "../src/cli";
 
 vi.mock("node:fs");
 vi.mock("node:path");
@@ -15,7 +15,7 @@ describe("package.json cleaner", () => {
     );
     vi.spyOn(fs, "writeFileSync").mockImplementation(vi.fn());
 
-    cull();
+    culls();
 
     return JSON.parse((fs.writeFileSync as any).mock.calls[0][1]);
   };

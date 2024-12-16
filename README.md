@@ -1,10 +1,10 @@
-# cull
+# culls
 
 > CLI to optimize package.json for NPM
 
-`cull` is a minimal CLI that removes unnecessary fields from `package.json` intended to be run _before_ publishing to NPM. The changes to `package.json` should not be checked into source control. The goal of `cull` is to create the absolute smallest possible `package.json` file for publishing to NPM.
+`culls` is a minimal CLI that removes unnecessary fields from `package.json` intended to be run _before_ publishing to NPM. The changes to `package.json` should not be checked into source control. The goal of `culls` is to create the absolute smallest possible `package.json` file for publishing to NPM.
 
-For example, `cull` will remove `devDependencies` from `package.json`, which, while automatically excluded during package installation, still adds unnecessary bulk to your published package. Other development-specific fields that can be removed include linting or testing configs, like for Prettier, Jest, or ESLint.
+For example, `culls` will remove `devDependencies` from `package.json`, which, while automatically excluded during package installation, still adds unnecessary bulk to your published package. Other development-specific fields that can be removed include linting or testing configs, like for Prettier, Jest, or ESLint.
 
 ## Usage
 
@@ -12,15 +12,15 @@ The CLI must be run with a valid `package.json` file in the current working dire
 
 ```bash
 # NPM
-npx cull
+npx culls
 
 # Bun
-bunx cull
+bunx culls
 ```
 
 ### Preserved fields
 
-By default, `cull` preserves fields that are typically required for publishing NPM packages.
+By default, `culls` preserves fields that are typically required for publishing NPM packages.
 
 <details>
 <summary>Default preserved <code>package.json</code> fields</summary>
@@ -62,15 +62,15 @@ To specify fields to preserve, use the `--preserve` flag. Fields should be comma
 
 ```bash
 # NPM
-npx cull --preserve=scripts,customField
+npx culls --preserve=scripts,customField
 
 # Bun
-bunx cull --preserve=scripts,customField
+bunx culls --preserve=scripts,customField
 ```
 
 ## Sample GitHub Actions workflow
 
-This sample workflow demonstrates using `cull` when automating package publishing.
+This sample workflow demonstrates using `culls` when automating package publishing.
 
 ```yaml
 # .github/workflows/publish.yml
@@ -102,9 +102,9 @@ jobs:
       - name: Build package
         run: npm run build
 
-      # Run `cull` to remove unnecessary fields.
+      # Run `culls` to remove unnecessary fields.
       - name: Prune package.json
-        run: npx cull
+        run: npx culls
 
       - name: Publish package
         env:

@@ -12,8 +12,8 @@ type PkgJson = Record<string, unknown> & {
  * Specify fields to preserve with the `--preserve` flag.
  * @example --preserve=customField1,customField2
  */
-export function cull() {
-  console.time("🌿 cull");
+export function culls() {
+  console.time("🌿 culls");
 
   const pkg_path = path.join(process.cwd(), "package.json");
   const pkg = fs.readFileSync(pkg_path, "utf8");
@@ -133,5 +133,5 @@ export function cull() {
     console.log("");
   }
 
-  console.timeEnd("🌿 cull");
+  console.timeEnd("🌿 culls");
 }

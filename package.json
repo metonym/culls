@@ -1,13 +1,13 @@
 {
   "name": "culls",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "description": "Optimize package.json for NPM",
   "author": "Eric Liu (https://github.com/metonym)",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "cull": "./dist/index.js"
+    "culls": "./dist/index.js"
   },
   "scripts": {
     "test": "vitest",
@@ -22,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/metonym/cull.git"
+    "url": "git+https://github.com/metonym/culls.git"
   },
   "homepage": "https://github.com/metonym/cull",
-  "bugs": "https://github.com/metonym/cull/issues",
+  "bugs": "https://github.com/metonym/culls/issues",
   "keywords": [
     "postcss",
     "postcss plugin",
