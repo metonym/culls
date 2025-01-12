@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { culls } from "../src/cli";
+import { culls } from "../src/culls";
 
 vi.mock("node:fs");
 vi.mock("node:path");
