@@ -3,7 +3,6 @@
     "esModuleInterop": true,
     "lib": ["esnext"],
     "moduleResolution": "node",
-    "skipLibCheck": true,
     "strict": true
   },
   "include": ["src/**/*", "tests/**/*"]
