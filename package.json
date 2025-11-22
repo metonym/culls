@@ -23,7 +23,7 @@
     "type": "git",
     "url": "git+https://github.com/metonym/culls.git"
   },
-  "homepage": "https://github.com/metonym/cull",
+  "homepage": "https://github.com/metonym/culls",
   "bugs": "https://github.com/metonym/culls/issues",
   "keywords": [
     "postcss",
