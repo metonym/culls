@@ -1,33 +1,37 @@
+import  { describe, it, expect, beforeEach, afterEach, spyOn, mock } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
 import { culls } from "../src/culls";
 
-vi.mock("node:fs");
-vi.mock("node:path");
-
 describe("package.json cleaner", () => {
   const originalCwd = process.cwd;
   const originalArgv = process.argv;
+  let cwdSpy: ReturnType<typeof spyOn>;
+  let joinSpy: ReturnType<typeof spyOn>;
 
   const mockPackageJsonTest = (mockPackageJson: Record<string, any>) => {
-    vi.spyOn(fs, "readFileSync").mockReturnValue(
+    const readFileSyncSpy = spyOn(fs, "readFileSync").mockReturnValue(
       JSON.stringify(mockPackageJson)
     );
-    vi.spyOn(fs, "writeFileSync").mockImplementation(vi.fn());
+    const writeFileSyncSpy = spyOn(fs, "writeFileSync").mockImplementation(mock(() => {}));
 
     culls();
 
-    return JSON.parse((fs.writeFileSync as any).mock.calls[0][1]);
+    const result = JSON.parse(writeFileSyncSpy.mock.calls[0][1] as string);
+    readFileSyncSpy.mockRestore();
+    writeFileSyncSpy.mockRestore();
+    return result;
   };
 
   beforeEach(() => {
-    vi.clearAllMocks();
     process.argv = ["node", "script.js"];
-    vi.spyOn(process, "cwd").mockImplementation(() => "/fake/path");
-    vi.spyOn(path, "join").mockImplementation(() => "/fake/path/package.json");
+    cwdSpy = spyOn(process, "cwd").mockReturnValue("/fake/path");
+    joinSpy = spyOn(path, "join").mockReturnValue("/fake/path/package.json");
   });
 
   afterEach(() => {
+    cwdSpy.mockRestore();
+    joinSpy.mockRestore();
     process.cwd = originalCwd;
     process.argv = originalArgv;
   });
