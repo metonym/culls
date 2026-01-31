@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "lib": ["esnext"],
-    "moduleResolution": "node",
-    "strict": true
-  },
-  "include": ["src/**/*", "tests/**/*"]
-}

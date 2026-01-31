@@ -1,7 +1,7 @@
 import  { describe, it, expect, beforeEach, afterEach, spyOn, mock } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
-import { culls } from "../src/culls";
+import { culls } from "./culls";
 
 describe("package.json cleaner", () => {
   const originalCwd = process.cwd;
